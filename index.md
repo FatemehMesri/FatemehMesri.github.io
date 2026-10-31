@@ -1,6 +1,6 @@
 # Fatemeh Mesri
 
-**Physics Graduate | Computational Modelling | **Nonlinear Dynamics**
+**Physics Graduate** | Computational Modelling | **Nonlinear Dynamics**
 
 MSc researcher at K. N. Toosi University of Technology, focusing on computational neuroscience, neuronal network dynamics, and spike-timing-dependent plasticity (STDP).
 
