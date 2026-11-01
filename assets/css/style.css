@@ -1,42 +1,66 @@
 
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
 
-/* Typography */
+/* ==============================
+   Global typography and layout
+================================ */
+
+:root {
+  --text-main: #e8f0fa;
+  --text-muted: #a9bbcf;
+  --accent: #79c8f2;
+  --accent-soft: rgba(121, 200, 242, 0.18);
+  --card-bg: rgba(12, 25, 43, 0.58);
+  --card-border: rgba(125, 180, 220, 0.24);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
 body {
   font-family: 'IBM Plex Sans', sans-serif;
-  line-height: 1.7;
+  color: var(--text-main);
+  line-height: 1.75;
   letter-spacing: 0.1px;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Consistent section spacing */
-section {
-  padding-top: 48px;
-  padding-bottom: 48px;
+/* Keep the existing background image and intensity unchanged */
+
+/* ==============================
+   Headings and text
+================================ */
+
+h1, h2, h3, h4 {
+  line-height: 1.25;
+  font-weight: 600;
+  letter-spacing: -0.3px;
 }
 
-/* Consistent card appearance */
-.card,
-.interest-card,
-.project-card,
-.education-card {
-  background: rgba(12, 25, 43, 0.58);
-  border: 1px solid rgba(125, 180, 220, 0.22);
-  border-radius: 16px;
-  padding: 24px;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  transition: border-color 0.25s ease, transform 0.25s ease;
+h1 {
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
 }
 
-.card:hover,
-.interest-card:hover,
-.project-card:hover,
-.education-card:hover {
-  border-color: rgba(125, 190, 235, 0.48);
-  transform: translateY(-3px);
+h2 {
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+  margin-bottom: 24px;
 }
 
-/* Navigation */
+h3 {
+  font-size: 1.2rem;
+}
+
+p {
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+/* ==============================
+   Navigation
+================================ */
+
 nav {
   position: sticky;
   top: 0;
@@ -45,13 +69,135 @@ nav {
   -webkit-backdrop-filter: blur(14px);
 }
 
-/* Links */
-a {
-  transition: color 0.2s ease;
+nav a {
+  color: var(--text-main);
+  text-decoration: none;
+  transition: color 0.25s ease;
 }
 
-/* Responsive layout */
-@media (max-width: 768px) {
+nav a:hover {
+  color: var(--accent);
+}
+
+/* ==============================
+   Sections and spacing
+================================ */
+
+section {
+  padding-top: 52px;
+  padding-bottom: 52px;
+  scroll-margin-top: 85px;
+}
+
+/* ==============================
+   Cards
+================================ */
+
+.card,
+.interest-card,
+.project-card,
+.education-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 24px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition:
+    border-color 0.25s ease,
+    transform 0.25s ease,
+    background 0.25s ease;
+}
+
+.card:hover,
+.interest-card:hover,
+.project-card:hover,
+.education-card:hover {
+  border-color: rgba(121, 200, 242, 0.5);
+  background: rgba(15, 32, 53, 0.68);
+  transform: translateY(-3px);
+}
+
+/* ==============================
+   Grid layouts
+================================ */
+
+.interests-grid,
+.research-grid,
+.projects-grid,
+.education-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  align-items: stretch;
+}
+
+.interests-grid > *,
+.research-grid > *,
+.projects-grid > *,
+.education-grid > * {
+  min-width: 0;
+}
+
+/* ==============================
+   Links and buttons
+================================ */
+
+a {
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+button {
+  font-family: inherit;
+}
+
+/* ==============================
+   Lists
+================================ */
+
+ul, ol {
+  padding-left: 22px;
+}
+
+li {
+  margin-bottom: 8px;
+  color: var(--text-muted);
+}
+
+/* ==============================
+   Tablet layout
+================================ */
+
+@media (max-width: 900px) {
+  .interests-grid,
+  .research-grid,
+  .projects-grid,
+  .education-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  section {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+}
+
+/* ==============================
+   Mobile layout
+================================ */
+
+@media (max-width: 600px) {
+  .interests-grid,
+  .research-grid,
+  .projects-grid,
+  .education-grid {
+    grid-template-columns: 1fr;
+  }
+
   section {
     padding-top: 32px;
     padding-bottom: 32px;
@@ -61,7 +207,20 @@ a {
   .interest-card,
   .project-card,
   .education-card {
-    padding: 18px;
+    padding: 19px;
+    border-radius: 14px;
+  }
+
+  h1 {
+    font-size: 2.35rem;
+  }
+
+  h2 {
+    font-size: 1.7rem;
+  }
+
+  p {
+    font-size: 0.96rem;
   }
 
   nav {
@@ -70,12 +229,19 @@ a {
   }
 }
 
-@media (max-width: 480px) {
+/* ==============================
+   Small screens
+================================ */
+
+@media (max-width: 380px) {
   h1 {
-    font-size: 2.2rem;
+    font-size: 2rem;
   }
 
-  h2 {
-    font-size: 1.6rem;
+  .card,
+  .interest-card,
+  .project-card,
+  .education-card {
+    padding: 16px;
   }
 }
