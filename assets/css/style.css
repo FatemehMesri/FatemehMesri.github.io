@@ -1,1 +1,81 @@
 
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
+
+/* Typography */
+body {
+  font-family: 'IBM Plex Sans', sans-serif;
+  line-height: 1.7;
+  letter-spacing: 0.1px;
+}
+
+/* Consistent section spacing */
+section {
+  padding-top: 48px;
+  padding-bottom: 48px;
+}
+
+/* Consistent card appearance */
+.card,
+.interest-card,
+.project-card,
+.education-card {
+  background: rgba(12, 25, 43, 0.58);
+  border: 1px solid rgba(125, 180, 220, 0.22);
+  border-radius: 16px;
+  padding: 24px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+.card:hover,
+.interest-card:hover,
+.project-card:hover,
+.education-card:hover {
+  border-color: rgba(125, 190, 235, 0.48);
+  transform: translateY(-3px);
+}
+
+/* Navigation */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+/* Links */
+a {
+  transition: color 0.2s ease;
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+  section {
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+
+  .card,
+  .interest-card,
+  .project-card,
+  .education-card {
+    padding: 18px;
+  }
+
+  nav {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+}
