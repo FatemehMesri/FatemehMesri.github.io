@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Akademisches Portfolio von Fatemeh Mesri, Masterstudentin der Festkörperphysik mit Interesse an computergestützter Physik, nichtlinearer Dynamik und Biophysik.">
+  <title>Fatemeh Mesri | Physik & computergestützte Forschung</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --background: #080f1b;
+      --surface: rgba(13, 25, 42, 0.82);
+      --text: #edf3fb;
+      --muted: #a9b8ca;
+      --accent: #65b5ff;
+      --border: rgba(150, 190, 230, 0.18);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background:
+        linear-gradient(rgba(5, 12, 23, 0.78), rgba(5, 12, 23, 0.91)),
+        url("assets/images/background.png") center / cover no-repeat;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: white;
+    }
+
+    .container {
+      width: min(1080px, 90%);
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(7, 14, 25, 0.9);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav {
+      min-height: 72px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: white;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .hero {
+      min-height: 490px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 90px 0;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(2.7rem, 7vw, 5rem);
+      line-height: 1.12;
+      letter-spacing: -2px;
+      margin-bottom: 20px;
+    }
+
+    .hero h2 {
+      font-size: clamp(1.1rem, 3vw, 1.55rem);
+      font-weight: 400;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    .hero p {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .section {
+      padding: 65px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      margin-bottom: 28px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px;
+      backdrop-filter: blur(10px);
+    }
+
+    .card h3 {
+      color: white;
+      font-size: 1.12rem;
+      margin-bottom: 8px;
+    }
+
+    .card p, .card li {
+      color: var(--muted);
+    }
+
+    .education-item {
+      margin-bottom: 20px;
+    }
+
+    .education-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .date {
+      color: var(--accent);
+      font-size: 0.9rem;
+      margin-bottom: 5px;
+    }
+
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .research-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px;
+      color: var(--muted);
+    }
+
+    .research-card h3 {
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    .project-link {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 17px;
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      font-weight: 600;
+    }
+
+    .contact-list {
+      list-style: none;
+    }
+
+    .contact-list li {
+      margin: 12px 0;
+      color: var(--muted);
+      overflow-wrap: anywhere;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 25px 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+
+    .language-switch {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-left: 18px;
+      white-space: nowrap;
+      font-size: 0.85rem;
+    }
+    .language-switch a {
+      color: var(--muted);
+      padding: 5px 8px;
+      border: 1px solid var(--border);
+      border-radius: 7px;
+    }
+    .language-switch a.active {
+      color: var(--accent);
+      border-color: var(--accent);
+      font-weight: 700;
+    }
+    @media (max-width: 650px) {
+      .language-switch { margin-left: 0; }
+    }
+
+    @media (max-width: 650px) {
+      nav {
+        padding: 16px 0;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        gap: 14px;
+      }
+
+      .hero {
+        min-height: 400px;
+        padding: 65px 0;
+      }
+
+      .section {
+        padding: 45px 0;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+  <header>
+    <div class="container">
+      <nav>
+        <a class="logo" href="#home">Fatemeh Mesri</a>
+        <div class="nav-links">
+          <span class="language-switch"><a href="index.html" lang="en">EN</a><a class="active" href="de.html" lang="de">DE</a></span>
+          <a href="#about">Über mich</a>
+          <a href="#education">Ausbildung</a>
+          <a href="#research">Forschung</a>
+          <a href="#projects">Projekte</a>
+          <a href="#contact">Kontakt</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero container" id="home">
+      <div class="eyebrow">Akademisches Portfolio</div>
+      <h1>Fatemeh Mesri</h1>
+      <h2>Physik · Computergestützte Modellierung · Nichtlineare Dynamik</h2>
+      <p>
+        Masterstudentin der Festkörperphysik an der K. N. Toosi University of Technology mit einem Bachelorabschluss in Technischer Physik. Meine Interessen umfassen theoretische Physik, computergestützte Modellierung, komplexe Systeme und die Physik biologischer Systeme.
+      </p>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <h2 class="section-title">Über mich</h2>
+        <div class="card">
+       
+<p>
+    Ich studiere im Masterstudiengang Festkörperphysik an der K. N. Toosi University of Technology und habe zuvor meinen Bachelorabschluss in Technischer Physik an der Universität Teheran erworben. Meine akademischen Interessen liegen in der theoretischen und computergestützten Physik. Dabei beschäftigt mich besonders die Frage, wie Wechselwirkungen zwischen relativ einfachen Komponenten zu komplexem kollektivem Verhalten führen.
+</p>
+
+<p>
+    Besonders interessiere ich mich für Chaostheorie, Bifurkationstheorie, stochastische Prozesse und nichtlineare dynamische Systeme. Diese Themen stehen in engem Zusammenhang mit der statistischen Physik außerhalb des Gleichgewichts und der statistischen Mechanik komplexer Systeme. Ein besonderer Schwerpunkt meines Interesses ist die weiche kondensierte Materie, einschließlich Selbstorganisation, aktiver Materie, Musterbildung und glasartiger Dynamik.
+</p>
+
+<p>
+    Darüber hinaus möchte ich die Verbindungen zwischen Physik und biologischen Systemen erforschen, insbesondere im Bereich der biologischen Physik, Biophysik und Computational Neuroscience. Auch Nanowissenschaften sowie interdisziplinäre Anwendungen computergestützter Methoden und des maschinellen Lernens interessieren mich. Langfristig möchte ich durch mathematische Modellierung, numerische Methoden und die grundlegenden Prinzipien der theoretischen Physik zu einem tieferen Verständnis komplexer Naturphänomene beitragen.
+</p>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="education">
+      <div class="container">
+        <h2 class="section-title">Ausbildung</h2>
+        <div class="card">
+          <div class="education-item">
+            <div class="date">2025 – Present</div>
+            <h3>Masterstudium in Festkörperphysik</h3>
+            <p>K. N. Toosi University of Technology (KNTU), Tehran, Iran</p>
+          </div>
+
+          <div class="education-item">
+            <div class="date">2020 – 2025</div>
+            <h3>Bachelorstudium in Technischer Physik</h3>
+            <p>University of Tehran, Iran</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="research">
+      <div class="container">
+        <h2 class="section-title">Forschungsinteressen</h2>
+        <div class="research-grid">
+          <div class="research-card">
+            <h3>Computational Physics</h3>
+            Numerische Modellierung und wissenschaftliches Rechnen.
+          </div>
+          <div class="research-card">
+            <h3>Nonlinear Dynamics</h3>
+            Komplexe Systeme, Bifurkationen und emergentes Verhalten.
+          </div>
+          <div class="research-card">
+            <h3>Computational Neuroscience</h3>
+            Neuronale Dynamik und mathematische Modelle neuronaler Netzwerke.
+          </div>
+          <div class="research-card">
+            <h3>Biophysics</h3>
+            Physikalische und mathematische Ansätze zur Untersuchung biologischer Systeme.
+          </div>
+          <div class="research-card">
+            <h3>Statistical Physics</h3>
+            Kollektives Verhalten und wechselwirkende Systeme.
+          </div>
+        </div>
+      </div>
+    </section>
+
+   <section class="section" id="current-research">
+  <div class="container">
+    <h2 class="section-title">Aktuelle Forschung</h2>
+    <div class="card">
+      <h3>Computational Modelling of Neural Network Dynamics and Synaptic Plasticity</h3>
+      
+      <p>
+        Meine Masterarbeit befasst sich mit der computergestützten Modellierung interagierender neuronaler Netzwerke und der Rolle synaptischer Plastizität bei der Entstehung kollektiven Verhaltens. Die Neuronen werden durch das Spiking-Neuron-Modell von Izhikevich beschrieben, das aufgrund seiner Fähigkeit ausgewählt wurde, mit moderatem Rechenaufwand eine Vielzahl kortikaler Entladungsmuster abzubilden. Aktivitätsabhängige Veränderungen der synaptischen Stärke werden mithilfe der spike-timing-dependent plasticity (STDP) eingeführt.
+      </p>
+
+      <p style="margin-top: 14px;">
+        Die Arbeit wird in klar abgegrenzten Phasen durchgeführt. Die erste Phase – die numerische Überprüfung und Reproduzierbarkeit des Izhikevich-Neurons sowie grundlegender Netzwerksimulationen – ist abgeschlossen. Derzeit wird STDP integriert und untersucht, wie das Zusammenspiel von Plastizitätsregel, Netzwerkkonnektivität und neuronaler Aktivität die zeitliche Organisation von Spikes, die Verteilung synaptischer Gewichte, Synchronisation, kollektive Oszillationen und dynamische Stabilität beeinflusst.
+      </p>
+
+   </p>
+
+</p>
+
+<p style="margin-top: 14px;">
+  <strong>Betreuung:</strong>
+  <a href="https://scholar.google.com/citations?user=6tNABDgAAAAJ&hl=en"
+     target="_blank"
+     rel="noopener noreferrer">
+    Dr Ehsan Norouzifar
+  </a>
+  <br>
+  <strong>Institution:</strong> K. N. Toosi University of Technology
+</p>
+      
+<!-- Research Project 1 -->
+<div class="card">
+  <div class="date">2026 – Present</div>
+
+  <h3>
+    Quanten-Biocomputing im Blutkreislauf:
+    Physik-inspirierte neuronale Architekturen für
+    atomar personalisierte Wirkstoffzielsteuerung
+  </h3>
+
+  <p>
+    Ein interdisziplinäres Forschungsprojekt zur Verbindung von Quantencomputing, Computational Biology, künstlicher Intelligenz und atomar personalisierter Wirkstoffzielsteuerung.
+  </p>
+
+  <p>
+    <strong>Research Betreuung:</strong>
+   <a href="https://scholar.google.com/citations?user=soFjq1oAAAAJ&hl=en"
+   target="_blank"
+   rel="noopener noreferrer">
+    Dr. Abbas Rahdar
+</a>
+  </p>
+
+  <p>
+    <strong>Gemeinsame Zweitautorinnen:</strong>
+    Fatemeh Mesri and Parnian Lali
+  </p>
+
+  <p>
+    <strong>Status:</strong> Manuskript in Vorbereitung.
+  </p>
+
+  <p>
+    <strong>Forschungsgebiete:</strong>
+    Quantum Biocomputing, Computational Biophysics,
+    Bioinformatics, Neural Networks, Drug Discovery.
+  </p>
+</div>
+
+
+<!-- Research Project 2 -->
+<div class="card">
+  <div class="date">2026 – Present</div>
+
+  <h3>
+    Entwicklung eines Lebensmittelanalysesystems mittels Spektroskopie
+  </h3>
+
+  <p>
+    Ein sich entwickelndes Forschungsprojekt mit Schwerpunkt auf Lebensmittelanalytik und Spektroskopie sowie auf laborbasierten Untersuchungen und analytischen Methoden zur Charakterisierung von Lebensmitteln.
+  </p>
+
+  <p>
+    <strong>Forschungsrichtung:</strong>
+    Food Analysis, Spectroscopy, Analytical Science.
+  </p>
+
+  <p>
+    <strong>Status:</strong>
+    Erste Forschungsgespräche und Projektentwicklung.
+  </p>
+
+  <p>
+<a href="https://scholar.google.com/citations?user=Fk32tmQAAAAJ&hl=en"
+   target="_blank"
+   rel="noopener noreferrer">
+    Dr. Farrokh Sarreshtedari
+</a>
+  </p>
+</div>
+
+    </div>
+  </div>
+</section>
+
+    <section class="section" id="projects">
+      <div class="container">
+        <h2 class="section-title">Ausgewählte Projekte</h2>
+        <div class="card">
+          <h3>Saddle-Node Bifurcation in the Izhikevich Model</h3>
+          <p>
+            Ein computergestütztes Projekt zur Untersuchung des Bifurkationsverhaltens in einem Spiking-Neuron-Modell.
+          </p>
+          <a class="project-link"
+             href="https://github.com/FatemehMesri/izhikevich-saddle-node-bifurcation"
+             target="_blank" rel="noopener noreferrer">
+            Projekt auf GitHub ansehen
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="publications">
+      <div class="container">
+        <h2 class="section-title">Publikationen</h2>
+
+        <div class="card">
+          <div class="date">Spring 2022</div>
+
+          <h3>Optogenetics: Concepts and Applications</h3>
+
+          <p>
+            <strong>Fatemeh Mesri</strong>
+          </p>
+
+          <p>
+            Ursprünglich auf Persisch veröffentlicht in
+            <em>Frequency (Farakans) Science Magazine</em>,
+            Ausgabe 1, Frühjahr 2022, S. 33–39.
+          </p>
+
+          <p>
+            Die englische Übersetzung wurde vom wissenschaftlichen Ausschuss der Universität geprüft.
+          </p>
+
+          <a class="project-link"
+             href="assets/papers/optogenetics-english.pdf"
+             target="_blank"
+             rel="noopener noreferrer">
+            Englische Übersetzung lesen (PDF)
+          </a>
+        </div>
+
+      </div>
+      
+<section class="section" id="achievements">
+  <div class="container">
+    <h2 class="section-title">Auszeichnungen und Erfolge</h2>
+
+    <div class="card">
+      <div class="date">2025</div>
+      <h3>Nationaler Nanotechnologie-Wettbewerb</h3>
+      <p>
+        Qualifikation für die zweite Runde des 15. Nationalen Wettbewerbs für Nanowissenschaft und Nanotechnologie (Iran).
+      </p>
+      <a class="project-link"
+         href="https://nanoeducation.ir/sys-admin/nano/upload/fileFolder/20260915_172543_0.pdf"
+         target="_blank"
+         rel="noopener noreferrer">
+        Offizielle Qualifikationsliste ansehen
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="container">
+    <h2 class="section-title">Kontakt</h2>
+    <div class="card">
+      <ul class="contact-list">
+        <li>
+          <strong>E-Mail:</strong> 
+          <a href="mailto:fateme.mesri@email.kntu.ac.ir">fateme.mesri@email.kntu.ac.ir</a>
+        </li>
+        <li>
+          <strong>LinkedIn:</strong> 
+          <a href="https://www.linkedin.com/in/fatemeh-mesri-404129207" 
+             target="_blank" rel="noopener noreferrer">
+            linkedin.com/in/fatemeh-mesri-404129207
+          </a>
+        </li>
+        <li>
+          <strong>GitHub:</strong> 
+          <a href="https://github.com/FatemehMesri" 
+             target="_blank" rel="noopener noreferrer">
+            github.com/FatemehMesri
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 Fatemeh Mesri · Akademisches Portfolio
+    </div>
+  </footer>
+
+</body>
+</html>
